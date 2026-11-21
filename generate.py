@@ -8,10 +8,15 @@ mini art, a dark world map with numbered pins, 23 one-line briefs,
 a markets strip, and a DATE CHECK strip naming the big Friday 20 Nov
 and Thursday 19 Nov stories so they are never shown as Saturday news.
 
-Date discipline: every story here happened, or was first reported,
-on Saturday 21 November 2026 in at least one time zone, as reported
-live on 21 Nov 2026 (AP/AFP/Dawn/The Hindu/Manila Times/Reuters/
-One Turn). Claims are attributed in the decks, not stated as fact.
+v2: date-discipline rebuild of v1 (provisional 97.7198%, rank 82/800).
+v1 featured three events that belong to earlier days as Saturday news
+(the Shenzhen summit was Thursday, the UK-EU reset deal and the S&P
+correction were Friday). v2 leads with Saturday's own developments:
+Rutte's Warsaw visit, fresh Saturday strikes on Ukraine, COP31's
+overtime; the summit, the UK-EU deal and the S&P close move to the
+DATE CHECK strip. All stories re-verified live on 21 Nov 2026
+(AP/AFP/Dawn/The Hindu/Manila Times/Reuters/Ukrinform/Ukrenergo).
+Claims are attributed in the decks, not stated as fact.
 
 Deterministic: fixed layout, fixed palette, no network, no random
 numbers, no timestamps. Run: python3 generate.py writes entry.png
@@ -110,12 +115,12 @@ def stars(d, x0, y0, x1, y1, pts):
 # ---------------------------------------------------------------- data
 
 STATS = [
-    ("2", "missiles down in Poland"),
-    ("\u22123.7%", "S&P 500 on Friday"),
+    ("300+", "settlements cut in Rivne"),
+    ("3", "missiles fired at Riyadh"),
     ("\u20ac7.9bn", "EU payout to Ukraine"),
     ("235 mo", "Gupta sentence"),
-    ("3", "UK\u2013EU deals signed"),
-    ("1st", "Trump\u2013Xi\u2013Putin summit"),
+    ("200", "countries at COP31"),
+    ("3rd", "COP31 draft due Saturday"),
 ]
 
 CHIPS = [
@@ -129,58 +134,59 @@ CHIPS = [
 
 # (num, city, topic, headline, deck, art)
 FEATURES = [
-    ("01", "POLAND", "MISSILES",
-     "Russian missiles hit Poland",
-     "Two missiles and a suspected drone come down; Warsaw calls it "
-     "a deliberate provocation, NATO a grave violation of its airspace. "
-     "(AFP, Reuters)",
+    ("01", "WARSAW", "NATO",
+     "NATO chief heads to Warsaw over Poland missile incursion",
+     "Kh-101 came down near Nowy Lipowiec on Friday; Rutte due in "
+     "Warsaw on Saturday; Poland seeks more Eastern Sentry forces. "
+     "(AP, Reuters)",
      "poland"),
-    ("02", "SHENZHEN, CHINA", "SUMMIT",
-     "Trump, Xi and Putin leave first summit with little to show",
-     "Trilateral talks end with a \u201chollow\u201d peace promise and few "
-     "concrete results; India says it has \u201ctaken note\u201d. "
-     "(Dawn, The Hindu)",
-     "summit"),
-    ("03", "NEW YORK", "MARKETS",
-     "S&P 500 slides into correction as AI shares plunge",
-     "US stocks fall about 3.7% on Friday as the AI sell-off spreads; "
-     "the Dow joins the S&P in correction territory. (One Turn)",
-     "markets"),
+    ("02", "KYIV, UKRAINE", "WAR",
+     "Russia strikes again as Ukraine rations power",
+     "Morning attack cuts power to 300 settlements in Rivne; a drone "
+     "kills a woman in Vinnytsia. Kyiv rations power. "
+     "(Ukrinform, Ukrenergo)",
+     "blackout"),
+    ("03", "ANTALYA, T\u00dcRKIYE", "CLIMATE",
+     "COP31 runs into overtime with no deal",
+     "Third draft due Saturday morning after the last text dropped "
+     "all fossil fuels; a dozen nations demand the language back. "
+     "(AFP, Dawn)",
+     "cop31"),
 ]
 
 # (num, city, topic, headline, deck, art)
 SMALLS = [
-    ("04", "BRUSSELS", "EUROPE",
-     "Burnham signs three UK\u2013EU deals",
-     "Food trade, carbon and youth mobility agreed. (Reuters)", "eu"),
-    ("05", "RIYADH", "CONFLICT",
+    ("04", "RIYADH", "CONFLICT",
      "Houthi missiles intercepted over Riyadh",
      "Three missiles fired at Riyadh destroyed. (Dawn)", "missile"),
-    ("06", "SAN FRANCISCO", "SCIENCE",
+    ("05", "SAN FRANCISCO", "SCIENCE",
      "Claude \u201cproves\u201d Riemann Hypothesis",
      "Anthropic: Claude proved maths\u2019 greatest riddle. (The Hindu)", "math"),
-    ("07", "NEW YORK", "JUSTICE",
+    ("06", "NEW YORK", "JUSTICE",
      "Gupta gets 235 months in Pannun plot",
      "Plot to kill Sikh separatist leader in New York. (The Hindu)", "gavel"),
-    ("08", "WORLD", "CLIMATE",
-     "COP31 crunch time, no deal in sight",
-     "No deal as the summit hits its crunch point. (Manila Times)", "climate"),
-    ("09", "LOS ANGELES", "FIRE",
+    ("07", "SHENZHEN", "VERDICT",
+     "World calls Shenzhen summit \u201chollow\u201d",
+     "India \u201ctakes note\u201d of hollow summit. (Dawn)", "summit"),
+    ("08", "LOS ANGELES", "FIRE",
      "Jury convicts man who started Palisades Fire",
      "Rinderknecht found guilty of starting the blaze. (One Turn)", "fire"),
-    ("10", "DHAKA", "UNREST",
+    ("09", "DHAKA", "UNREST",
      "Fresh arson attacks erupt in Bangladesh",
      "Violence flares before Hasina\u2019s return. (Dawn, The Hindu)",
      "unrest"),
-    ("11", "COPENHAGEN", "ESPIONAGE",
+    ("10", "COPENHAGEN", "ESPIONAGE",
      "Denmark accuses Russia of murder plot",
      "Russia accused of murder plot in Denmark. (Manila Times)", "spy"),
-    ("12", "BRAS\u00cdLIA", "POLITICS",
+    ("11", "BRAS\u00cdLIA", "POLITICS",
      "Bolsonaro hospitalised for abdominal pain",
      "Former president taken to hospital. (AFP)", "flagbr"),
-    ("13", "ULAANBAATAR", "POLITICS",
+    ("12", "ULAANBAATAR", "POLITICS",
      "Mongolia\u2019s president resigns",
      "President quits; snap election ahead. (supportyourbusiness.eu)", "flagmn"),
+    ("13", "WASHINGTON", "POLITICS",
+     "Trump floats chief of staff for 2028",
+     "\u201cDo you wanna run for president?\u201d (AFP)", "usflag"),
 ]
 
 # (num, one-line brief) — numbers continue from the 13 features
@@ -188,7 +194,7 @@ BRIEFS = [
     ("14", "THE HAGUE \u2014 ICJ ruling echoes in Gaza."),
     ("15", "BRUSSELS \u2014 \u20ac1bn EU military aid for Kyiv."),
     ("16", "BAGHDAD \u2014 Forces retake Jurf al-Sakhar."),
-    ("17", "WASHINGTON \u2014 Trump eyes aide, 2028."),
+    ("17", "IOWA \u2014 Army delays explosives blasting."),
     ("18", "NEW DELHI \u2014 Modi urges SCO dialogue."),
     ("19", "JOHANNESBURG \u2014 60 murders a day."),
     ("20", "DEEP SPACE \u2014 Voyager 1 calls from afar."),
@@ -211,10 +217,11 @@ BRIEFS = [
 ]
 
 DATE_CHECK = (
-    "First reported Friday 20 Nov, NOT shown as Saturday\u2019s news: Cyclone Akvan "
-    "landfall \u00b7 ~30 missiles at Kyiv \u00b7 BepiColombo reaches Mercury \u00b7 Phillips 118 "
-    "\u00b7 Pancreatic-cancer pill \u00b7 ICJ Myanmar verdict (Thu 19) \u00b7 Anthropic\u2019s $83 IPO "
-    "pricing \u00b7 GTA VI launch \u00b7 Riyadh tower attack (Thu) \u00b7 Khasab tanker strike (Thu)."
+    "First reported Fri 20 Nov, NOT Saturday\u2019s news: Shenzhen summit "
+    "(Thu 19) \u00b7 UK\u2013EU reset deal \u00b7 S&P correction \u00b7 Kyiv bridges, "
+    "7 killed \u00b7 Kryvyi Rih, 2 killed, 42 hurt \u00b7 Cyclone Akvan \u00b7 "
+    "ICJ Myanmar verdict (Thu 19) \u00b7 Anthropic $83 IPO \u00b7 GTA VI launch "
+    "\u00b7 Riyadh tower attack (Thu) \u00b7 Khasab strike (Thu)."
 )
 
 FOOTER = (
@@ -287,6 +294,68 @@ def art_summit(d, x, y, w, h):
     # round table
     d.ellipse([x + 96, y + 92, x + 214, y + 112], fill=(96, 62, 44))
     d.ellipse([x + 104, y + 94, x + 206, y + 106], fill=(140, 96, 66))
+
+
+def art_blackout(d, x, y, w, h):
+    """Blackout Kyiv: dark skyline, a few lit windows, drone, pylon."""
+    vgrad(d, x, y, x + w, y + h, (10, 16, 30), (34, 30, 52))
+    stars(d, x, y, x + w, y + h,
+          [(30, 12, 1), (90, 20, 1), (150, 10, 2), (220, 18, 1),
+           (260, 12, 1), (180, 26, 1)])
+    # drone silhouette with red lights
+    dx, dy = x + 190, y + 26
+    d.ellipse([dx - 12, dy - 3, dx + 12, dy + 3], fill=(8, 10, 16))
+    d.ellipse([dx - 16, dy - 6, dx - 8, dy + 2], fill=(40, 44, 60))
+    d.ellipse([dx + 8, dy - 6, dx + 16, dy + 2], fill=(40, 44, 60))
+    d.ellipse([dx - 2, dy - 2, dx + 2, dy + 2], fill=(255, 60, 40))
+    # power pylon with sagging lines
+    d.line([x + 40, y + 20, x + 40, y + h - 30], fill=(16, 18, 28), width=3)
+    d.line([x + 18, y + 28, x + 62, y + 28], fill=(16, 18, 28), width=3)
+    d.line([x + 18, y + 28, x + 120, y + 44], fill=(60, 62, 76), width=1)
+    d.line([x + 62, y + 28, x + 150, y + 40], fill=(60, 62, 76), width=1)
+    # dark skyline, one burning building, a few lit windows
+    d.rectangle([x + 8, y + 62, x + 60, y + h], fill=(8, 10, 18))
+    d.rectangle([x + 70, y + 46, x + 118, y + h], fill=(10, 12, 20))
+    d.rectangle([x + 128, y + 70, x + 180, y + h], fill=(8, 10, 18))
+    d.rectangle([x + 190, y + 56, x + 250, y + h], fill=(10, 12, 20))
+    d.rectangle([x + 260, y + 74, x + w - 8, y + h], fill=(8, 10, 18))
+    for r, col in [(16, (255, 120, 40)), (9, (255, 170, 60)),
+                   (5, (255, 220, 130))]:
+        d.ellipse([x + 94 - r, y + 52 - r, x + 94 + r, y + 52 + r], fill=col)
+    for wx, wy in [(20, 70), (36, 84), (80, 56), (140, 80), (200, 66),
+                   (216, 82), (272, 84), (150, 96)]:
+        d.rectangle([x + wx, y + wy, x + wx + 6, y + wy + 8],
+                    fill=(255, 214, 130))
+    d.rectangle([x, y + h - 4, x + w, y + h], fill=(10, 12, 20))
+
+
+def art_cop31(d, x, y, w, h):
+    """Antalya climate talks: globe, thermometer, draft papers."""
+    vgrad(d, x, y, x + w, y + h, (150, 205, 170), (40, 110, 80))
+    d.ellipse([x + w - 70, y + 8, x + w - 30, y + 48], fill=(255, 214, 140))
+    # globe
+    cx, cy, r = x + 120, y + 56, 40
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(30, 90, 140))
+    d.ellipse([cx - 18, cy - 30, cx + 6, cy - 6], fill=(60, 150, 90))
+    d.ellipse([cx - 4, cy + 8, cx + 26, cy + 32], fill=(60, 150, 90))
+    d.ellipse([cx - 34, cy + 2, cx - 14, cy + 20], fill=(60, 150, 90))
+    d.arc([cx - r, cy - r, cx + r, cy + r], 0, 360,
+          fill=(200, 230, 240), width=2)
+    # thermometer, red rising
+    tx = x + 210
+    d.rectangle([tx, y + 16, tx + 14, y + 88], fill=(240, 238, 230))
+    d.rectangle([tx + 2, y + 44, tx + 12, y + 86], fill=(220, 40, 30))
+    d.ellipse([tx - 6, y + 82, tx + 20, y + 108], fill=(220, 40, 30))
+    d.ellipse([tx - 2, y + 86, tx + 16, y + 104], fill=(255, 120, 90))
+    # draft papers on the table
+    for px, py, rot in [(30, 88, 0), (58, 94, 0), (86, 90, 0)]:
+        d.rectangle([x + px, y + py, x + px + 26, y + py + 16],
+                    fill=(250, 248, 240))
+        d.line([x + px + 4, y + py + 5, x + px + 22, y + py + 5],
+               fill=(120, 120, 110), width=1)
+        d.line([x + px + 4, y + py + 10, x + px + 22, y + py + 10],
+               fill=(120, 120, 110), width=1)
+    d.rectangle([x, y + h - 6, x + w, y + h], fill=(30, 80, 58))
 
 
 def art_markets(d, x, y, w, h):
@@ -384,10 +453,29 @@ def mini_art(d, x, y, w, h, kind):
         d.ellipse([x + w // 2 - 10, y + 10, x + w // 2 + 10, y + 30],
                   fill=(255, 220, 60))
         d.rectangle([x, y + h - 4, x + w, y + h], fill=(255, 220, 60))
+    elif kind == "summit":
+        vgrad(d, x, y, x + w, y + h, (214, 164, 92), (126, 84, 96))
+        for (px, col) in [(60, (178, 34, 34)), (88, (222, 30, 30)),
+                          (116, (36, 80, 164))]:
+            d.line([x + px, y + 8, x + px, y + h - 8], fill=(240, 238, 230),
+                   width=2)
+            d.rectangle([x + px, y + 8, x + px + 20, y + 22], fill=col)
+        d.ellipse([x + 30, y + 30, x + 156, y + 40], fill=(96, 62, 44))
+    elif kind == "usflag":
+        d.rectangle([x, y, x + w, y + h], fill=(255, 255, 255))
+        for k in range(4):
+            d.rectangle([x, y + 4 + k * 12, x + w, y + 10 + k * 12],
+                        fill=(178, 34, 34))
+        d.rectangle([x, y, x + 64, y + 26], fill=(24, 36, 80))
+        for sx in (10, 24, 38, 52):
+            for sy in (6, 16):
+                d.ellipse([x + sx, y + sy, x + sx + 3, y + sy + 3],
+                          fill=(255, 255, 255))
 
 
 FEATURE_ART = {"poland": art_poland, "summit": art_summit,
-               "markets": art_markets}
+               "markets": art_markets, "blackout": art_blackout,
+               "cop31": art_cop31}
 
 
 # ---------------------------------------------------------------- layout
@@ -399,8 +487,8 @@ def draw_masthead(d):
            font=F(SANS, 13), fill=GREY)
     title = "Saturday 21 November 2026"
     d.text((28, 32), title, font=F(SERIF_B, 60), fill=INK)
-    kicker = ("Russian missiles hit Poland \u00b7 Trump\u2013Xi\u2013Putin summit ends hollow "
-              "\u00b7 Wall Street slides \u00b7 UK\u2013EU sign new deals")
+    kicker = ("Rutte heads to Warsaw \u00b7 Russia strikes Ukraine again \u00b7 COP31 runs into "
+              "overtime \u00b7 Houthi missiles over Riyadh")
     d.text((28, 104), kicker, font=F(SERIF, 15), fill=RED)
     hline(d, 28, W - 28, 128, w=4)
 
@@ -477,10 +565,10 @@ CONTINENTS = [
     [(272, 122), (306, 118), (318, 130), (300, 146), (276, 142)],
 ]
 # (pin number, map x, map y)
-PINS = [("1", 200, 32), ("2", 296, 58), ("3", 78, 44), ("4", 172, 38),
-        ("5", 222, 72), ("6", 38, 52), ("7", 92, 54), ("9", 52, 62),
-        ("10", 272, 60), ("11", 182, 22), ("12", 118, 124),
-        ("13", 282, 34)]
+PINS = [("1", 196, 30), ("2", 210, 38), ("3", 184, 52), ("4", 222, 72),
+        ("5", 38, 52), ("6", 84, 40), ("7", 296, 58), ("8", 52, 62),
+        ("9", 272, 60), ("10", 170, 18), ("11", 118, 124),
+        ("12", 282, 34), ("13", 68, 54)]
 
 
 def draw_map(d, x, y, w, h):

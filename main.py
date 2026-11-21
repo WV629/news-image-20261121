@@ -9,7 +9,11 @@
 # feature stories, 10 smaller stories, a world map with numbered
 # pins, 23 more briefs, a markets strip, and a DATE CHECK box that
 # names the big Friday 20 Nov and Thursday 19 Nov stories and keeps
-# them out of the Saturday paper. It was drawn in code (see
+# them out of the Saturday paper. v2: date-discipline rebuild of v1
+# (provisional 97.7198%, rank 82/800) — the Shenzhen summit, UK-EU
+# deal and S&P correction move to the DATE CHECK strip; the features
+# lead with Saturday developments (Rutte in Warsaw, fresh strikes
+# on Ukraine, COP31 overtime). It was drawn in code (see
 # generate.py) and committed here as entry.png.
 
 import os
