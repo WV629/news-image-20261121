@@ -15,8 +15,11 @@
 # lead with Saturday developments (Rutte in Warsaw, fresh strikes
 # on Ukraine, COP31 overtime). v3 (98.0122% dev) widens selection:
 # Sanaa operation, Nvidia subpoena, HIMARS, H5N1 vaccine, Bayer
-# settlement, Las Vegas GP qualifying. It was drawn in code (see
-# generate.py) and committed here as entry.png.
+# settlement, Las Vegas GP qualifying. v4 (98.2873% dev) adds
+# Britain's cyber-ops admission and the banks' vendor breach,
+# frames feature 2 with Friday's toll, and swaps the COP31 stat
+# to "0 deal agreed". It was drawn in code (see generate.py)
+# and committed here as entry.png.
 
 import os
 import shutil

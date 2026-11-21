@@ -21,7 +21,11 @@ the top entries' edge is breadth across fields, not stricter dating
 operation, the Nvidia subpoena, HIMARS in Sumy, the H5N1 vaccine,
 the Bayer settlement and Las Vegas GP qualifying, all verified live
 on 21 Nov 2026 (Arab News/Reuters/Defense Express/PIB/AP/F1).
-Claims are attributed in the decks, not stated as fact.
+v3 scored 98.2873% (12 won, 0 lost), just under the rank-50 line
+(~98.31%), so v4 adds Britain's cyber-ops admission and the banks'
+vendor breach, frames feature 2 with Friday's toll, and swaps the
+COP31 stat to "0 deal agreed". Verified live 21 Nov 2026 (Sky News,
+Reuters/CNA). Claims are attributed in the decks, not stated as fact.
 
 Deterministic: fixed layout, fixed palette, no network, no random
 numbers, no timestamps. Run: python3 generate.py writes entry.png
@@ -124,14 +128,14 @@ STATS = [
     ("3", "missiles fired at Riyadh"),
     ("\u20ac7.9bn", "EU payout to Ukraine"),
     ("235 mo", "Gupta sentence"),
-    ("200", "countries at COP31"),
-    ("6", "Houthi workshops hit in Sana\u2019a"),
+    ("0", "deal agreed at COP31"),
+    ("6", "workshops hit in Sana\u2019a"),
 ]
 
 CHIPS = [
     ("EUROPE 12", BLUE),
-    ("AMERICAS 7", TEAL),
-    ("ASIA-PACIFIC 8", ORANGE),
+    ("AMERICAS 8", TEAL),
+    ("ASIA-PACIFIC 7", ORANGE),
     ("MIDEAST 5", PURPLE),
     ("AFRICA 2", GREEN),
     ("WORLD 2", RED),
@@ -147,9 +151,9 @@ FEATURES = [
      "poland"),
     ("02", "KYIV, UKRAINE", "WAR",
      "Russia strikes again as Ukraine rations power",
-     "Morning attack cuts power to 300 settlements in Rivne; a drone "
-     "kills a woman in Vinnytsia. Kyiv rations power. "
-     "(Ukrinform, Ukrenergo)",
+     "Friday\u2019s barrage killed 11; Saturday brings fresh strikes "
+     "\u2014 300 settlements cut in Rivne, a woman killed in Vinnytsia. "
+     "(Ukrinform)",
      "blackout"),
     ("03", "ANTALYA, T\u00dcRKIYE", "CLIMATE",
      "COP31 runs into overtime with no deal",
@@ -176,10 +180,10 @@ SMALLS = [
     ("08", "LOS ANGELES", "FIRE",
      "Jury convicts man who started Palisades Fire",
      "Rinderknecht found guilty of starting the blaze. (One Turn)", "fire"),
-    ("09", "DHAKA", "UNREST",
-     "Fresh arson attacks erupt in Bangladesh",
-     "Violence flares before Hasina\u2019s return. (Dawn, The Hindu)",
-     "unrest"),
+    ("09", "LONDON", "SECURITY",
+     "Britain confirms cyber ops on Moscow",
+     "General says UK hits Russia, China, Iran, N. Korea. (Sky News)",
+     "cyber"),
     ("10", "COPENHAGEN", "ESPIONAGE",
      "Denmark accuses Russia of murder plot",
      "Russia accused of murder plot in Denmark. (Manila Times)", "spy"),
@@ -216,7 +220,7 @@ BRIEFS = [
     ("31", "GENEVA \u2014 UN: Hodeidah raids hit aid line."),
     ("32", "SANA\u2019A \u2014 Houthis warn Saudi airspace."),
     ("33", "KYIV \u2014 Russia pounds Ukraine anew."),
-    ("34", "TOKYO \u2014 China snub may lift Japan PM."),
+    ("34", "NEW YORK \u2014 Banks hit by vendor breach."),
     ("35", "MOSCOW \u2014 Russia ships fuel to Brazil."),
     ("36", "LAS VEGAS \u2014 GP qualifying tonight."),
 ]
@@ -497,6 +501,13 @@ def mini_art(d, x, y, w, h, kind):
                     y + 12 + k * 6], fill=(255, 220, 90), width=1)
             d.line([x + w // 2 + 22, y + 12 + k * 6, x + w // 2 + 30,
                     y + 12 + k * 6], fill=(255, 220, 90), width=1)
+    elif kind == "cyber":
+        d.rectangle([x, y, x + w, y + h], fill=(8, 16, 12))
+        d.text((x + 10, y + 4), ">_ run op", font=F(SANS_B, 12),
+               fill=(60, 220, 120))
+        d.text((x + 10, y + 20), "target: RU CN IR KP",
+               font=F(SANS, 9), fill=(60, 220, 120))
+        d.rectangle([x + 10, y + 34, x + 20, y + 42], fill=(255, 60, 40))
 
 
 FEATURE_ART = {"poland": art_poland, "summit": art_summit,
@@ -593,7 +604,7 @@ CONTINENTS = [
 # (pin number, map x, map y)
 PINS = [("1", 196, 30), ("2", 210, 38), ("3", 184, 52), ("4", 228, 66),
         ("5", 38, 52), ("6", 84, 40), ("7", 296, 58), ("8", 52, 62),
-        ("9", 272, 60), ("10", 170, 18), ("11", 212, 84),
+        ("9", 164, 28), ("10", 178, 14), ("11", 212, 84),
         ("13", 68, 54)]
 
 
