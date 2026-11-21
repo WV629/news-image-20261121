@@ -13,7 +13,9 @@
 # (provisional 97.7198%, rank 82/800) — the Shenzhen summit, UK-EU
 # deal and S&P correction move to the DATE CHECK strip; the features
 # lead with Saturday developments (Rutte in Warsaw, fresh strikes
-# on Ukraine, COP31 overtime). It was drawn in code (see
+# on Ukraine, COP31 overtime). v3 (98.0122% dev) widens selection:
+# Sanaa operation, Nvidia subpoena, HIMARS, H5N1 vaccine, Bayer
+# settlement, Las Vegas GP qualifying. It was drawn in code (see
 # generate.py) and committed here as entry.png.
 
 import os

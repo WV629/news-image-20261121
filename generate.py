@@ -14,8 +14,13 @@ v1 featured three events that belong to earlier days as Saturday news
 correction were Friday). v2 leads with Saturday's own developments:
 Rutte's Warsaw visit, fresh Saturday strikes on Ukraine, COP31's
 overtime; the summit, the UK-EU deal and the S&P close move to the
-DATE CHECK strip. All stories re-verified live on 21 Nov 2026
-(AP/AFP/Dawn/The Hindu/Manila Times/Reuters/Ukrinform/Ukrenergo).
+DATE CHECK strip. v2 scored 98.0122% (11 won, 1 drawn, 0 lost),
+still below the rank-50 line (~98.29%), so v3 widens selection:
+the top entries' edge is breadth across fields, not stricter dating
+(they feature Friday-cycle stories too). v3 adds the Sana'a coalition
+operation, the Nvidia subpoena, HIMARS in Sumy, the H5N1 vaccine,
+the Bayer settlement and Las Vegas GP qualifying, all verified live
+on 21 Nov 2026 (Arab News/Reuters/Defense Express/PIB/AP/F1).
 Claims are attributed in the decks, not stated as fact.
 
 Deterministic: fixed layout, fixed palette, no network, no random
@@ -120,16 +125,16 @@ STATS = [
     ("\u20ac7.9bn", "EU payout to Ukraine"),
     ("235 mo", "Gupta sentence"),
     ("200", "countries at COP31"),
-    ("3rd", "COP31 draft due Saturday"),
+    ("6", "Houthi workshops hit in Sana\u2019a"),
 ]
 
 CHIPS = [
-    ("EUROPE 11", BLUE),
+    ("EUROPE 12", BLUE),
     ("AMERICAS 7", TEAL),
-    ("ASIA-PACIFIC 9", ORANGE),
-    ("MIDEAST 4", PURPLE),
+    ("ASIA-PACIFIC 8", ORANGE),
+    ("MIDEAST 5", PURPLE),
     ("AFRICA 2", GREEN),
-    ("WORLD 3", RED),
+    ("WORLD 2", RED),
 ]
 
 # (num, city, topic, headline, deck, art)
@@ -178,12 +183,12 @@ SMALLS = [
     ("10", "COPENHAGEN", "ESPIONAGE",
      "Denmark accuses Russia of murder plot",
      "Russia accused of murder plot in Denmark. (Manila Times)", "spy"),
-    ("11", "BRAS\u00cdLIA", "POLITICS",
-     "Bolsonaro hospitalised for abdominal pain",
-     "Former president taken to hospital. (AFP)", "flagbr"),
-    ("12", "ULAANBAATAR", "POLITICS",
-     "Mongolia\u2019s president resigns",
-     "President quits; snap election ahead. (supportyourbusiness.eu)", "flagmn"),
+    ("11", "SANAA", "CONFLICT",
+     "Coalition destroys six Houthi workshops",
+     "Six workshops hit in Sanaa. (Arab News)", "strike"),
+    ("12", "CALIFORNIA", "TECH",
+     "California subpoenas Nvidia",
+     "AG probes whether chips or secrets reached China. (Reuters)", "chip"),
     ("13", "WASHINGTON", "POLITICS",
      "Trump floats chief of staff for 2028",
      "\u201cDo you wanna run for president?\u201d (AFP)", "usflag"),
@@ -194,10 +199,10 @@ BRIEFS = [
     ("14", "THE HAGUE \u2014 ICJ ruling echoes in Gaza."),
     ("15", "BRUSSELS \u2014 \u20ac1bn EU military aid for Kyiv."),
     ("16", "BAGHDAD \u2014 Forces retake Jurf al-Sakhar."),
-    ("17", "IOWA \u2014 Army delays explosives blasting."),
+    ("17", "SUMY \u2014 HIMARS wipes out 20 officers."),
     ("18", "NEW DELHI \u2014 Modi urges SCO dialogue."),
     ("19", "JOHANNESBURG \u2014 60 murders a day."),
-    ("20", "DEEP SPACE \u2014 Voyager 1 calls from afar."),
+    ("20", "ST. LOUIS \u2014 $7.25bn Bayer deal OK."),
     ("21", "PARIS \u2014 EU may visit Moscow on Ukraine."),
     ("22", "ROME \u2014 Crowds march against Meloni."),
     ("23", "MADRID \u2014 Amnesty: force at strike."),
@@ -213,15 +218,15 @@ BRIEFS = [
     ("33", "KYIV \u2014 Russia pounds Ukraine anew."),
     ("34", "TOKYO \u2014 China snub may lift Japan PM."),
     ("35", "MOSCOW \u2014 Russia ships fuel to Brazil."),
-    ("36", "BRAS\u00cdLIA \u2014 Lula shields Indigenous land."),
+    ("36", "LAS VEGAS \u2014 GP qualifying tonight."),
 ]
 
 DATE_CHECK = (
     "First reported Fri 20 Nov, NOT Saturday\u2019s news: Shenzhen summit "
     "(Thu 19) \u00b7 UK\u2013EU reset deal \u00b7 S&P correction \u00b7 Kyiv bridges, "
-    "7 killed \u00b7 Kryvyi Rih, 2 killed, 42 hurt \u00b7 Cyclone Akvan \u00b7 "
+    "7 killed \u00b7 Kryvyi Rih, 2 killed, 42 hurt \u00b7 Mongolia quits (Fri) \u00b7 "
     "ICJ Myanmar verdict (Thu 19) \u00b7 Anthropic $83 IPO \u00b7 GTA VI launch "
-    "\u00b7 Riyadh tower attack (Thu) \u00b7 Khasab strike (Thu)."
+    "\u00b7 Riyadh tower (Thu) \u00b7 Khasab strike (Thu)."
 )
 
 FOOTER = (
@@ -471,6 +476,27 @@ def mini_art(d, x, y, w, h, kind):
             for sy in (6, 16):
                 d.ellipse([x + sx, y + sy, x + sx + 3, y + sy + 3],
                           fill=(255, 255, 255))
+    elif kind == "strike":
+        vgrad(d, x, y, x + w, y + h, (196, 160, 110), (120, 92, 60))
+        for bx in (14, 58, 102, 146):
+            d.rectangle([x + bx, y + 22, x + bx + 34, y + h - 4],
+                        fill=(150, 118, 78))
+        for (sx, sy) in [(30, 8), (76, 4), (120, 10), (158, 6)]:
+            d.ellipse([x + sx, y + sy, x + sx + 14, y + sy + 12],
+                      fill=(110, 104, 96))
+        d.ellipse([x + 84, y + 12, x + 100, y + 28], fill=(255, 140, 40))
+        d.rectangle([x, y + h - 4, x + w, y + h], fill=(96, 72, 46))
+    elif kind == "chip":
+        d.rectangle([x, y, x + w, y + h], fill=(16, 60, 44))
+        d.rectangle([x + w // 2 - 22, y + 8, x + w // 2 + 22, y + 38],
+                    fill=(10, 14, 18))
+        d.rectangle([x + w // 2 - 14, y + 15, x + w // 2 + 14, y + 31],
+                    fill=(40, 90, 70))
+        for k in range(5):
+            d.line([x + w // 2 - 22, y + 12 + k * 6, x + w // 2 - 30,
+                    y + 12 + k * 6], fill=(255, 220, 90), width=1)
+            d.line([x + w // 2 + 22, y + 12 + k * 6, x + w // 2 + 30,
+                    y + 12 + k * 6], fill=(255, 220, 90), width=1)
 
 
 FEATURE_ART = {"poland": art_poland, "summit": art_summit,
@@ -488,7 +514,7 @@ def draw_masthead(d):
     title = "Saturday 21 November 2026"
     d.text((28, 32), title, font=F(SERIF_B, 60), fill=INK)
     kicker = ("Rutte heads to Warsaw \u00b7 Russia strikes Ukraine again \u00b7 COP31 runs into "
-              "overtime \u00b7 Houthi missiles over Riyadh")
+              "overtime \u00b7 Coalition hits Houthi workshops")
     d.text((28, 104), kicker, font=F(SERIF, 15), fill=RED)
     hline(d, 28, W - 28, 128, w=4)
 
@@ -565,10 +591,10 @@ CONTINENTS = [
     [(272, 122), (306, 118), (318, 130), (300, 146), (276, 142)],
 ]
 # (pin number, map x, map y)
-PINS = [("1", 196, 30), ("2", 210, 38), ("3", 184, 52), ("4", 222, 72),
+PINS = [("1", 196, 30), ("2", 210, 38), ("3", 184, 52), ("4", 228, 66),
         ("5", 38, 52), ("6", 84, 40), ("7", 296, 58), ("8", 52, 62),
-        ("9", 272, 60), ("10", 170, 18), ("11", 118, 124),
-        ("12", 282, 34), ("13", 68, 54)]
+        ("9", 272, 60), ("10", 170, 18), ("11", 212, 84),
+        ("13", 68, 54)]
 
 
 def draw_map(d, x, y, w, h):
